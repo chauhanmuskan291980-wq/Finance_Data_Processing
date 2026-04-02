@@ -1,0 +1,36 @@
+{
+  "name": "finance_data_processing",
+  "version": "1.0.0",
+  "description": "Finance Data Processing and Access Control Backend",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chauhanmuskan291980-wq/Finance_Data_Processing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chauhanmuskan291980-wq/Finance_Data_Processing/issues"
+  },
+  "homepage": "https://github.com/chauhanmuskan291980-wq/Finance_Data_Processing#readme",
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
+    "joi": "^18.1.2",
+    "jsonwebtoken": "^9.0.3",
+    "prisma": "^5.22.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
