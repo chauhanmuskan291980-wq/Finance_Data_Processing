@@ -53,8 +53,18 @@ exports.getRecordsBySearch = async(req,res)=>{
 
 exports.getRecords = async(req,res)=>{
    try{
-       const getrecords = await prisma.record.findMany();
-       res.status(200).json(getrecords) 
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 5;
+    const records = await prisma.record.findMany({
+      skip:(page-1) * limit,
+      take:limit,
+      orderBy:{createdAt:"desc"}
+    });
+    res.json({
+      page,
+      limit,
+      data:records
+    })
    }
    catch(error){
     res.json({message:error.message})

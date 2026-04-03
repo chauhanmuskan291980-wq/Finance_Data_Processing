@@ -260,50 +260,73 @@
  *         description: Record deleted successfully
  */
 
+
 /**
  * @swagger
  * /records/all:
  *   get:
- *     summary: Get all financial records (Admin & Analyst)
+ *     summary: Get all financial records with pagination (Admin & Analyst)
  *     tags: [Records]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           example: 1
+ *         description: Page number (default = 1)
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           example: 5
+ *         description: Number of records per page (default = 5)
  *     responses:
  *       200:
- *         description: Successfully fetched all records
+ *         description: Successfully fetched paginated records
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: integer
- *                     example: 1
- *                   amount:
- *                     type: number
- *                     example: 5000
- *                   type:
- *                     type: string
- *                     example: INCOME
- *                   category:
- *                     type: string
- *                     example: Salary
- *                   date:
- *                     type: string
- *                     format: date-time
- *                     example: 2026-04-03T00:00:00.000Z
- *                   notes:
- *                     type: string
- *                     example: Monthly salary
- *                   createdBy:
- *                     type: integer
- *                     example: 1
- *                   createdAt:
- *                     type: string
- *                     format: date-time
- *                     example: 2026-04-03T10:00:00.000Z
+ *               type: object
+ *               properties:
+ *                 page:
+ *                   type: integer
+ *                   example: 1
+ *                 limit:
+ *                   type: integer
+ *                   example: 5
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         example: 1
+ *                       amount:
+ *                         type: number
+ *                         example: 5000
+ *                       type:
+ *                         type: string
+ *                         example: INCOME
+ *                       category:
+ *                         type: string
+ *                         example: Salary
+ *                       date:
+ *                         type: string
+ *                         format: date-time
+ *                         example: 2026-04-03T00:00:00.000Z
+ *                       notes:
+ *                         type: string
+ *                         example: Monthly salary
+ *                       createdBy:
+ *                         type: integer
+ *                         example: 1
+ *                       createdAt:
+ *                         type: string
+ *                         format: date-time
+ *                         example: 2026-04-03T10:00:00.000Z
  *       401:
  *         description: Unauthorized (No token)
  *       403:
