@@ -8,7 +8,7 @@ describe("User API", () => {
     .post("/users/register")
     .send({
       name: "Test User",
-      email: `test${Date.now()}@example.com`, // ✅ UNIQUE EMAIL
+      email: `test${Date.now()}@example.com`, //  UNIQUE EMAIL
       password: "123456",
       role: "ADMIN"
     });
