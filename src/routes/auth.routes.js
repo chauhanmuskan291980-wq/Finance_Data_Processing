@@ -309,3 +309,123 @@
  *       403:
  *         description: Forbidden (Not allowed role)
  */
+
+/**
+ * @swagger
+ * /dashboard/summary:
+ *   get:
+ *     summary: Get total income, total expense, and net balance
+ *     tags: [Dashboard]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Summary data fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 totalIncome:
+ *                   type: number
+ *                   example: 50000
+ *                 totalExpense:
+ *                   type: number
+ *                   example: 20000
+ *                 netBalance:
+ *                   type: number
+ *                   example: 30000
+ */
+
+
+/**
+ * @swagger
+ * /dashboard/categories:
+ *   get:
+ *     summary: Get category-wise totals
+ *     tags: [Dashboard]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Category totals fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   category:
+ *                     type: string
+ *                     example: Salary
+ *                   _sum:
+ *                     type: object
+ *                     properties:
+ *                       amount:
+ *                         type: number
+ *                         example: 50000
+ */
+
+/**
+ * @swagger
+ * /dashboard/recent:
+ *   get:
+ *     summary: Get recent financial records
+ *     tags: [Dashboard]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Recent records fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                   amount:
+ *                     type: number
+ *                   type:
+ *                     type: string
+ *                   category:
+ *                     type: string
+ *                   date:
+ *                     type: string
+ *                     format: date-time
+ *                   notes:
+ *                     type: string
+ *                   createdAt:
+ *                     type: string
+ *                     format: date-time
+ */
+
+
+/**
+ * @swagger
+ * /dashboard/trends:
+ *   get:
+ *     summary: Get monthly financial trends
+ *     tags: [Dashboard]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Monthly trends fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   month:
+ *                     type: string
+ *                     example: 2026-04-01T00:00:00.000Z
+ *                   total:
+ *                     type: number
+ *                     example: 70000
+ */
