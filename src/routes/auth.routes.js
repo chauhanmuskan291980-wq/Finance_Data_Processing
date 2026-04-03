@@ -121,3 +121,141 @@
  *       200:
  *         description: Current user details
  */
+
+
+/**
+ * @swagger
+ * /records:
+ *   post:
+ *     summary: Create a financial record (Admin & Analyst)
+ *     tags: [Records]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - amount
+ *               - type
+ *               - category
+ *               - date
+ *             properties:
+ *               amount:
+ *                 type: number
+ *                 example: 5000
+ *               type:
+ *                 type: string
+ *                 example: INCOME
+ *               category:
+ *                 type: string
+ *                 example: Salary
+ *               date:
+ *                 type: string
+ *                 format: date
+ *                 example: 2026-04-03
+ *               notes:
+ *                 type: string
+ *                 example: Monthly salary
+ *     responses:
+ *       201:
+ *         description: Record created successfully
+ */
+
+
+/**
+ * @swagger
+ * /records:
+ *   get:
+ *     summary: Get all records with optional filters
+ *     tags: [Records]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Filter by type (INCOME / EXPENSE)
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Filter by category
+ *       - in: query
+ *         name: startDate
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Start date filter
+ *       - in: query
+ *         name: endDate
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: End date filter
+ *     responses:
+ *       200:
+ *         description: List of records
+ */
+
+
+/**
+ * @swagger
+ * /records/{id}:
+ *   patch:
+ *     summary: Update a record (Admin only)
+ *     tags: [Records]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Record ID
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               amount:
+ *                 type: number
+ *               type:
+ *                 type: string
+ *               category:
+ *                 type: string
+ *               date:
+ *                 type: string
+ *                 format: date
+ *               notes:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Record updated successfully
+ */
+
+/**
+ * @swagger
+ * /records/{id}:
+ *   delete:
+ *     summary: Delete a record (Admin only)
+ *     tags: [Records]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Record ID
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Record deleted successfully
+ */
