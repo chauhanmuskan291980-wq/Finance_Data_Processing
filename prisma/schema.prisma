@@ -26,5 +26,6 @@ model Record {
   notes     String?
   createdBy Int
   createdAt DateTime @default(now())
+  isDeleted Boolean @default(false)
   user   User @relation(fields: [createdBy], references: [id])
 }

@@ -97,15 +97,18 @@ exports.updatedRecord = async (req, res) => {
 };
 
 
-exports.deleteRecord = async(req,res)=>{
-    try{
-      const {id} = req.params;
-      await prisma.record.delete({
-        where:{id:Number(id)},
-      });
-      res.json({message:"Recode deleted"});
-    }
-    catch(error){
-     res.status(500).json({message: error.message})
-    }
-}
+exports.deleteRecord = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await prisma.record.update({
+      where: { id: Number(id) },
+      data: { isDeleted: true },
+    });
+
+    res.json({ message: "Record soft deleted" });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
