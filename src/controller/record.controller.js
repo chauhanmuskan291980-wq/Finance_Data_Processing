@@ -27,7 +27,7 @@ exports.createRecord = async(req,res)=>{
     }
 }
 
-exports.getRecords = async(req,res)=>{
+exports.getRecordsBySearch = async(req,res)=>{
     try{
         const { type, category, startDate, endDate } = req.query;
         const filters ={};
@@ -49,6 +49,16 @@ exports.getRecords = async(req,res)=>{
     catch(error){
      res.status(500).json({message:error.message});
     }
+}
+
+exports.getRecords = async(req,res)=>{
+   try{
+       const getrecords = await prisma.record.findMany();
+       res.status(200).json(getrecords) 
+   }
+   catch(error){
+    res.json({message:error.message})
+   }
 }
 
 exports.updatedRecord = async (req, res) => {

@@ -259,3 +259,53 @@
  *       200:
  *         description: Record deleted successfully
  */
+
+/**
+ * @swagger
+ * /records/all:
+ *   get:
+ *     summary: Get all financial records (Admin & Analyst)
+ *     tags: [Records]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Successfully fetched all records
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                     example: 1
+ *                   amount:
+ *                     type: number
+ *                     example: 5000
+ *                   type:
+ *                     type: string
+ *                     example: INCOME
+ *                   category:
+ *                     type: string
+ *                     example: Salary
+ *                   date:
+ *                     type: string
+ *                     format: date-time
+ *                     example: 2026-04-03T00:00:00.000Z
+ *                   notes:
+ *                     type: string
+ *                     example: Monthly salary
+ *                   createdBy:
+ *                     type: integer
+ *                     example: 1
+ *                   createdAt:
+ *                     type: string
+ *                     format: date-time
+ *                     example: 2026-04-03T10:00:00.000Z
+ *       401:
+ *         description: Unauthorized (No token)
+ *       403:
+ *         description: Forbidden (Not allowed role)
+ */

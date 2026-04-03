@@ -14,8 +14,15 @@ router.post("/",
 router.get(
     "/",
     authenticate,
-    recordController.getRecords
+    recordController.getRecordsBySearch
 );
+
+router.get(
+    "/all",
+    authenticate,
+    authorizeRoles("ADMIN", "ANALYST"),
+    recordController.getRecords
+)
 
 router.patch(
     "/:id",
