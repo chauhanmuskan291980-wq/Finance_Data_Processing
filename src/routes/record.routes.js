@@ -4,10 +4,15 @@ const router = express.Router();
 const recordController = require("../controller/record.controller");
 const { authenticate, authorizeRoles } = require("../middleware/auth.middleware");
 const { route } = require("./user.routers");
+const validate = require("../middleware/validate.middleware");
+const { recordValidation } = require("../validations/record.validation");
+
 
 router.post("/",
     authenticate,
     authorizeRoles("ADMIN", "ANALYST"),
+    recordValidation,
+    validate,
     recordController.createRecord
 );
 

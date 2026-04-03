@@ -2,7 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 const userController = require("../controller/user.controller");
+const validate = require("../middleware/validate.middleware");
 
+const {
+  registerValidation,
+  loginValidation,
+} = require("../validations/user.validation");
 const {
   authenticate,
   authorizeRoles,
@@ -10,9 +15,13 @@ const {
 
 
 router.post("/register",
+  registerValidation,
+  validate,
   userController.register
 )
 router.post("/login",
+  registerValidation,
+  validate,
   userController.login
 )
 //  Get all users (Admin)
